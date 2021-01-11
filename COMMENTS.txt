@@ -1,0 +1,9 @@
+- Explicar la arquitectura que utilizaste en tu proyecto y la razón por la que
+decidiste utilizarla
+- Lista de las librerías externas que utilizaste, explicándo qué hacen y la razón
+por la que la elegiste
+- Qué parte(s) de tu código pueden ser mejoradas si tuvieras más tiempo
+- Cuáles fueron los mayores problemas que encontraste en el desarrollo de
+la práctica y cómo los resolviste?
+- Si alguno de los puntos solicitados no los concluiste, menciona por qué. Si
+fuera por cuestión de tiempo, trata de mencionar qué estrategia llevarías a cabo para desarrollarlo
