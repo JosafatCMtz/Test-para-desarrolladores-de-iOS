@@ -6,7 +6,7 @@
 //
 
 import XCTest
-@testable import tvShowsApp
+@testable import TVShowsApp
 
 class TVShowsAppTests: XCTestCase {
 
