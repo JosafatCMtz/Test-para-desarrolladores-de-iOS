@@ -11,7 +11,7 @@
 import Foundation
 
 // MARK: - Show
-struct Show: Codable {
+struct ShowModel: Codable {
 	let id: Int
 	let url: String
 	let name: String
@@ -185,4 +185,4 @@ enum TypeEnum: String, Codable {
 	case talkShow = "Talk Show"
 }
 
-typealias Shows = [Show]
+typealias Shows = [ShowModel]
