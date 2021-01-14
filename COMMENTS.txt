@@ -1,0 +1,15 @@
+- Explicar la arquitectura que utilizaste en tu proyecto y la razón por la que
+decidiste utilizarla
+-- El patrón de diseño que utilice fue el patrón de MVVM, lo uso por que puedo separar las capas que contienen lógica de la capa de vista, y he leido que esta separación de roles permite a los diseñadores interactivos centrarse en las necesidades de UX en lugar de la programación o la lógica empresarial, lo que permite que las capas de una aplicación se desarrollen en múltiples flujos de trabajo.
+- Lista de las librerías externas que utilizaste, explicando qué hacen y la razón
+por la que la elegiste
+-- "RealmSwift" https://realm.io/, la uso para poder guardar los datos de forma local en el dispositivo, creo que me facilita el tiempo de desarrollo para el salvado de datos en forma local.
+- Qué parte(s) de tu código pueden ser mejoradas si tuvieras más tiempo
+-- La lógica de obtener los datos desde el servidor, y guardado de datos, obviamente el diseño.
+- Cuáles fueron los mayores problemas que encontraste en el desarrollo de
+la práctica y cómo los resolviste?
+-- La nueva actualización del Xcode venía con un problema al usar cocoapods, ahora creo que están haciendo de una manera mas intrusiva el uso de SPM (Swift Package Manager), pero lo pude resolver con este articulo, "No such module … in Xcode https://stackoverflow.com/questions/39970273/no-such-module-in-xcode", espero y les sirva
+- Si alguno de los puntos solicitados no los concluiste, menciona por qué. Si
+fuera por cuestión de tiempo, trata de mencionar qué estrategia llevarías a cabo para desarrollarlo
+-- Manejo de errores, UnitTest, Animación, Diseño en la UI, me gustaría saber que existe un equipo para poder solucionarlo.
+
