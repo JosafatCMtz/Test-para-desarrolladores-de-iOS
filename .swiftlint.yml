@@ -2,4 +2,5 @@ disabled_rules: # rule identifiers to exclude from running
   - force_cast
   - identifier_name
   - legacy_hashing
+  -  weak_delegate
 line_length: 510
