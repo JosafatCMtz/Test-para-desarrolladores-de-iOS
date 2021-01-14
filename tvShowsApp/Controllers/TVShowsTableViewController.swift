@@ -59,8 +59,13 @@ class TVShowsTableViewController: UITableViewController {
 			self.viewModel.saveDataLocaly(whitModel: showDetail)
         }
         let delete = UITableViewRowAction(style: .destructive, title: "Borrar") { _, indexPath in
-            self.shows.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .fade)
+			let alert = UIAlertController(title: "Borrar", message: "Deseas eliminar este registro?", preferredStyle: .alert)
+			alert.addAction(UIAlertAction(title: "Si", style: .destructive, handler: { (_) in
+				self.shows.remove(at: indexPath.row)
+				tableView.deleteRows(at: [indexPath], with: .fade)
+			}))
+			alert.addAction(UIAlertAction(title: "No", style: .default, handler: nil))
+			self.present(alert, animated: true)
         }
         action.backgroundColor = .green
         return [action, delete]

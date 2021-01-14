@@ -59,17 +59,23 @@ class FavoritesTableViewController: UITableViewController, FavoritesDelegate {
     }
 
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? { let delete = UITableViewRowAction(style: .destructive, title: "Borrar") { _, indexPath in
-        let realm = try! Realm()
-        let deletedValue = self.favoriteShows?[indexPath.row].uuid
-        let favoriteShowToDelete = realm.objects(ShowDetailModel.self).filter("uuid == %@", deletedValue!)
-		if favoriteShowToDelete.count > 0 {
-			for favorite in favoriteShowToDelete {
-				try! realm.write {
-					realm.delete(favorite)
+		let alert = UIAlertController(title: "Borrar", message: "Deseas eliminar este registro?", preferredStyle: .alert)
+		alert.addAction(UIAlertAction(title: "Si", style: .destructive, handler: { (_) in
+			let realm = try! Realm()
+			let deletedValue = self.favoriteShows?[indexPath.row].uuid
+			let favoriteShowToDelete = realm.objects(ShowDetailModel.self).filter("uuid == %@", deletedValue!)
+			if favoriteShowToDelete.count > 0 {
+				for favorite in favoriteShowToDelete {
+					try! realm.write {
+						realm.delete(favorite)
+					}
 				}
 			}
-		}
-		tableView.deleteRows(at: [indexPath], with: .fade)
+			tableView.deleteRows(at: [indexPath], with: .fade)
+		}))
+		alert.addAction(UIAlertAction(title: "No", style: .default, handler: nil))
+		self.present(alert, animated: true)
+       
     }
     return [delete]
     }
