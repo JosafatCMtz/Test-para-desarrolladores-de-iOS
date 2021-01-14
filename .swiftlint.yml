@@ -2,5 +2,8 @@ disabled_rules: # rule identifiers to exclude from running
   - force_cast
   - identifier_name
   - legacy_hashing
-  -  weak_delegate
+  - weak_delegate
+  - force_try
 line_length: 510
+excluded:
+  - Pods

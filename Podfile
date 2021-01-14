@@ -6,11 +6,11 @@ target 'tvShowsApp' do
   use_frameworks!
 
   # Pods for tvShowsApp
+  pod 'RealmSwift'
 
   target 'tvShowsAppTests' do
     inherit! :search_paths
     # Pods for testing
-    pod 'RealmSwift'
   end
 
   target 'tvShowsAppUITests' do

@@ -6,6 +6,8 @@
 //
 
 import Foundation
+import RealmSwift
+
 enum Result<Success, Failure: Error> {
     case success(Success)
     case failure(Failure)
@@ -17,10 +19,21 @@ enum ErrorMessage: String, Error {
 }
 
 class ShowsServices: NSObject {
-    private let endpoint: EndPointUrl = .shows
     let realm = try! Realm()
-    fileprivate func saveDataLocaly(whitModel model: ShowDetailModel) {
-        // TODO: - Save data form model
+    private let endpoint: EndPointUrl = .shows
+
+    fileprivate func getDataFromLocalStorage() {
+        let showsLocal = realm.objects(ShowDetailModel.self)
+        for show in showsLocal {
+            debugPrint(show.name)
+        }
+    }
+
+    func saveDataLocaly(whitModel model: ShowDetailModel) {
+        try! realm.write {
+            realm.add(model)
+        }
+        getDataFromLocalStorage()
     }
 
     func getShow(completion: @escaping (Result<Shows, ErrorMessage>) -> Void) {
@@ -45,7 +58,8 @@ class ShowsServices: NSObject {
         dataTask.resume()
     }
 
-    func getShowDetailById(_ id: String, completition: @escaping (Result<ShowDetailModel, ErrorMessage>) -> Void) {
-        // TODO: - Get data from  localy
+    func getFavoriteShows(completition: @escaping (Results<ShowDetailModel>) -> Void) {
+		let showsLocal = realm.objects(ShowDetailModel.self).filter("isFavorite = %@", true)
+		completition(showsLocal)
     }
 }

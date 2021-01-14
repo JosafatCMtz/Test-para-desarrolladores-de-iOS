@@ -29,7 +29,6 @@ class TVShowsTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return shows.count
     }
 
@@ -47,10 +46,24 @@ class TVShowsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let showDetailsViewController = storyboard?.instantiateViewController(withIdentifier: "ShowDetailViewController") as? ShowDetailViewController {
             let show = shows[indexPath.row]
-			let showDetail: ShowDetailModel = ShowDetailModel(uuid: UUID().uuidString, imageUrlStirng: show.image.medium, name: show.name, officialSite: show.officialSite ?? "", network: show.network?.name ?? "", lenguage: show.language.rawValue, summary: show.summary, isFavorite: false)
+            let showDetail: ShowDetailModel = ShowDetailModel(value: ["uuid": UUID().uuidString, "imageUrlStirng": show.image.medium, "name": show.name, "officialSite": show.officialSite ?? "", "network": show.network?.name ?? "", "lenguage": show.language.rawValue, "summary": show.summary])
             showDetailsViewController.show = showDetail
-			navigationController?.pushViewController(showDetailsViewController, animated: true)
+            navigationController?.pushViewController(showDetailsViewController, animated: true)
         }
+    }
+
+    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+		let action = UITableViewRowAction(style: .default, title: "Favorito") { [self] _, indexPath in
+            let show = self.shows[indexPath.row]
+			let showDetail: ShowDetailModel = ShowDetailModel(value: ["uuid": UUID().uuidString, "imageUrlStirng": show.image.medium, "name": show.name, "officialSite": show.officialSite ?? "", "network": show.network?.name ?? "", "lenguage": show.language.rawValue, "summary": show.summary, "isFavorite": true])
+			self.viewModel.saveDataLocaly(whitModel: showDetail)
+        }
+        let delete = UITableViewRowAction(style: .destructive, title: "Borrar") { _, indexPath in
+            self.shows.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        }
+        action.backgroundColor = .green
+        return [action, delete]
     }
 }
 
