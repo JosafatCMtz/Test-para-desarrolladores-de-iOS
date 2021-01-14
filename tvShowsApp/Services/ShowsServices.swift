@@ -18,8 +18,9 @@ enum ErrorMessage: String, Error {
 
 class ShowsServices: NSObject {
     private let endpoint: EndPointUrl = .shows
-    func saveDataLocaly(whitModel: ShowDetailModel) {
-        //TODO: - Save data form model
+    let realm = try! Realm()
+    fileprivate func saveDataLocaly(whitModel model: ShowDetailModel) {
+        // TODO: - Save data form model
     }
 
     func getShow(completion: @escaping (Result<Shows, ErrorMessage>) -> Void) {

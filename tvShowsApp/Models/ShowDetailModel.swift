@@ -6,8 +6,10 @@
 //
 
 import Foundation
+import Realm
 
 class ShowDetailModel: NSObject {
+    @objc dynamic var uuid: String = ""
     @objc dynamic var imageUrlStirng: String = ""
     @objc dynamic var name: String = ""
     @objc dynamic var officialSite: String = ""
@@ -16,7 +18,8 @@ class ShowDetailModel: NSObject {
     @objc dynamic var summary: String = ""
     @objc dynamic var isFavorite: Bool = false
 
-    init(imageUrlStirng: String, name: String, officialSite: String, network: String, lenguage: String, summary: String, isFavorite: Bool = false) {
+    init(uuid: String, imageUrlStirng: String, name: String, officialSite: String, network: String, lenguage: String, summary: String, isFavorite: Bool = false) {
+        self.uuid = uuid
         self.imageUrlStirng = imageUrlStirng
         self.name = name
         self.officialSite = officialSite

@@ -10,7 +10,7 @@ import UIKit
 class ShowDetailViewController: UIViewController {
     // MARK: - Properties
 
-	public var show: ShowDetailModel?
+    public var show: ShowDetailModel?
 
     // MARK: - IBOulets
 
@@ -23,19 +23,20 @@ class ShowDetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-		guard let show = show else { return }
-		configureScreenViews(whitModel: show)
+        guard let show = show else { return }
+        configureScreenViews(whitModel: show)
     }
 
     // MARK: - Configuration Methods
 
     fileprivate func configureScreenViews(whitModel model: ShowDetailModel) {
-		title = model.name
-		episodeImageView.load(urlString: model.imageUrlStirng)
-		nameShowLabel.text = model.name
+        title = model.name
+        episodeImageView.load(urlString: model.imageUrlStirng)
+        nameShowLabel.text = model.name
         officialSiteLabel.text = model.officialSite
-		networkLabel.text = model.network
-		langaglabel.text = model.lenguage
+        networkLabel.text = model.network
+        langaglabel.text = model.lenguage
         episodeSummaryTextView.text = model.summary
+        debugPrint(model.uuid)
     }
 }

@@ -47,7 +47,7 @@ class TVShowsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let showDetailsViewController = storyboard?.instantiateViewController(withIdentifier: "ShowDetailViewController") as? ShowDetailViewController {
             let show = shows[indexPath.row]
-            let showDetail: ShowDetailModel = ShowDetailModel(imageUrlStirng: show.image.medium, name: show.name, officialSite: show.officialSite ?? "", network: show.network?.name ?? "", lenguage: show.language.rawValue, summary: show.summary, isFavorite: false)
+			let showDetail: ShowDetailModel = ShowDetailModel(uuid: UUID().uuidString, imageUrlStirng: show.image.medium, name: show.name, officialSite: show.officialSite ?? "", network: show.network?.name ?? "", lenguage: show.language.rawValue, summary: show.summary, isFavorite: false)
             showDetailsViewController.show = showDetail
 			navigationController?.pushViewController(showDetailsViewController, animated: true)
         }
